@@ -27,7 +27,7 @@ app.get('/stream', (req, res) => {
     );
     res.write(lastFrame);
     res.write('\r\n');
-  }, 200);
+  }, 1000);  
 
   req.on('close', () => clearInterval(timer));
 });
