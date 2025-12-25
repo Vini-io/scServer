@@ -37,7 +37,7 @@ app.get('/stream', (req, res) => {
 let keysStore = [];
 
 app.post('/keyPost', (req, res) => {
-  const { key } = req.body;
+  const { key, time } = req.body;
 
   if (!key) {
     return res.status(400).send('Key ausente');
@@ -45,12 +45,13 @@ app.post('/keyPost', (req, res) => {
 
   keysStore.push({
     key,
-    date: new Date()
+    date: time || new Date()
   });
 
   console.log('Tecla recebida:', key);
   res.sendStatus(200);
 });
+
 
 /**
  * GET /keys
