@@ -36,28 +36,20 @@ app.get('/stream', (req, res) => {
 
 let keysStore = [];
 
-/**
- * POST /keys
- * body:
- * {
- *   "key": "F1",
- *   "value": "abrir_menu"
- * }
- */
 app.post('/keyPost', (req, res) => {
-  const { key, value } = req.body;
+  const { key } = req.body;
 
-  if (!key || !value) {
-    return res.status(400).json({ error: 'key e value são obrigatórios' });
+  if (!key) {
+    return res.status(400).send('Key ausente');
   }
 
   keysStore.push({
     key,
-    value,
     date: new Date()
   });
 
-  res.json({ success: true });
+  console.log('Tecla recebida:', key);
+  res.sendStatus(200);
 });
 
 /**
