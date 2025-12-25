@@ -44,7 +44,7 @@ let keysStore = [];
  *   "value": "abrir_menu"
  * }
  */
-app.post('/keys', (req, res) => {
+app.post('/keyPost', (req, res) => {
   const { key, value } = req.body;
 
   if (!key || !value) {
@@ -63,7 +63,7 @@ app.post('/keys', (req, res) => {
 /**
  * GET /keys
  */
-app.get('/keys', (req, res) => {
+app.get('/keyGet', (req, res) => {
   res.json(keysStore);
 });
 
